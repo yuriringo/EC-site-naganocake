@@ -1,2 +1,33 @@
-<h1>商品詳細</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<h2>商品詳細</h2>
+
+<table>
+ <tr>
+  <td rowspan="5">
+   <%= image_tag @item.get_image(100,100) %>
+  </td>
+ </tr>
+
+ <tr>
+  <td>商品名</td> <th><%= @item.name %></th>
+ </tr>
+
+ <tr>
+  <td>商品説明</td> <th><%= @item.introduction %></th>
+ </tr>
+
+ <tr>
+  <td>ジャンル</td> <th><%= @item.genre.name %></th>
+ </tr>
+
+ <tr>
+  <td>税込価格（税抜価格）</td> <th><%= @item.price %></th>
+ </tr>
+
+ <tr>
+  <td>販売ステータス</td> <th><%= @item.is_active %></th>
+ </tr>
+</table>
+
+<%= form_with model: @item do |f| %>
+ <%= f.submit '編集する' %>
+<% end %>
