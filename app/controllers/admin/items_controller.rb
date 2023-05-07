@@ -35,11 +35,6 @@ class Admin::ItemsController < ApplicationController
    end
   end
 
-  #消費税を加えた価格
-  def add_tax_price
-   (self.price * 1.10).round
-  end
-
   private
    def item_params
     params.require(:item).permit(:name, :introduction, :price, :genre_id, :image, :is_active)

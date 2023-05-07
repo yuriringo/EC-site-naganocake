@@ -7,22 +7,22 @@
 <table class="table table-hover table-inverse">
   <table>
     <tr>
-     <th>氏名</th> <th><%= @customer.name %></th>
+     <th>氏名</th> <th><%= @customer.last_name %> <%= @customer.first_name %></th>
     </tr>
     <tr>
-     <th>カナ</th> <th>kug</th>
+     <th>カナ</th> <th><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></th>
     </tr>
     <tr>
-     <th>郵便番号</th> <th>jhg</th>
+     <th>郵便番号</th> <th><%= @customer.postal_code %></th>
     </tr>
     <tr>
-     <th>住所</th> <th>ijgij</th>
+     <th>住所</th> <th><%= @customer.address %></th>
     </tr>
     <tr>
-     <th>電話番号</th> <th>dfgt</th>
+     <th>電話番号</th> <th><%= @customer.telephone_number %></th>
     </tr>
     <tr>
-     <th>メールアドレス</th> <th>tgt</th>
+     <th>メールアドレス</th> <th><%= @customer.email %></th>
     </tr>
   </table>
 
