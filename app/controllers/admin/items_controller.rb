@@ -21,13 +21,14 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
+   @item=Item.find(params[:id])
   end
 
   def update
    @item=Item.find(params[:id])
    if @item.update(item_params)
-    flash[:notice]="商品の新規登録が完了しました。"
-    redirect_to admin_items_path(@book.id)
+    flash[:notice]="商品情報の編集が完了しました。"
+    redirect_to admin_items_path
    else
     @item=Item.all
     render :edit
