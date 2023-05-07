@@ -1,1 +1,29 @@
-<h1>商品一覧（全x件）</h1>
+<h3>マイページ</h3>
+
+<h3>登録情報</h3>
+
+<%= form_with model: @customer,url: addresses_path, method: :get do |f| %>
+
+<table class="table table-hover table-inverse">
+  <table>
+    <tr>
+     <th>氏名</th> <th><%= @customer.name %></th>
+    </tr>
+    <tr>
+     <th>カナ</th> <th>kug</th>
+    </tr>
+    <tr>
+     <th>郵便番号</th> <th>jhg</th>
+    </tr>
+    <tr>
+     <th>住所</th> <th>ijgij</th>
+    </tr>
+    <tr>
+     <th>電話番号</th> <th>dfgt</th>
+    </tr>
+    <tr>
+     <th>メールアドレス</th> <th>tgt</th>
+    </tr>
+  </table>
+
+<% end %>
