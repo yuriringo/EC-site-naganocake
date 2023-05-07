@@ -10,9 +10,18 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
+   @genre=Genre.find(params[:id])
   end
 
   def update
+   @genre=Genre.find(params[:id])
+   if @genre.update(genres_params)
+    flash[:notice]="ジャンルの編集が完了しました。"
+    redirect_to admin_genres_path(@genre.id)
+   else
+    @genres=Genre.all
+    render :edit
+   end
   end
 
 private

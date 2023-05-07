@@ -30,8 +30,10 @@ Rails.application.routes.draw do
    resources :orders, only: [:show, :update]
    resources :order_details, only: [:update]
 
-   post 'genres' => 'genres#create'
-   get 'genres' => 'genres#index'
+#   post 'genres' => 'genres#create'
+#   get 'genres' => 'genres#index'
+#   patch 'genres/:id' => 'genres#update'
+
   end
 
   scope module: :admin do
