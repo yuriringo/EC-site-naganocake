@@ -1,5 +1,4 @@
 <h1>商品編集</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
 <%= form_with model: @item,url: admin_item_path(@item.id), method: :patch do |f| %>
 
 <table>
@@ -22,7 +21,7 @@
  </tr>
 
  <tr>
-  <td>税込価格（税抜価格）</td> <th><%= f.text_field :price %></th>
+  <td>税込価格（税抜価格）</td> <th><%= f.text_field :price %>円</th>
  </tr>
 
  <tr>
