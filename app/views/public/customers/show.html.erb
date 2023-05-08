@@ -2,8 +2,7 @@
 
 <h3>登録情報</h3>
 
-<%= form_with model: @customer,url: addresses_path, method: :get do |f| %>
-<%= f.submit '編集する' %>
+<%= link_to '編集する', customers_mypage_edit_path %>
 
 <table class="table table-hover table-inverse">
   <table>
@@ -26,5 +25,3 @@
      <th>メールアドレス</th> <th><%= @customer.email %></th>
     </tr>
   </table>
-
-<% end %>
