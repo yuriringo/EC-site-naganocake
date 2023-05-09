@@ -18,7 +18,6 @@ Rails.application.routes.draw do
    get '/about' => 'homes#about'
    get '/customers/check' => 'customers#check'
    get 'customers/mypage/edit' => 'customers#edit'
-   #get 'customers/mypage/show' => 'customers#show'
    patch 'customers/mypage' => 'customers#update'
 
    patch '/customers/withdrawal' => 'customers#withdrawal'
