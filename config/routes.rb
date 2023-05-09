@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
    resources :items, only: [:index, :show]
-   resource :customers, only: [:show, :update]
+   resource :customers, only: [:show]
    resources :cart_items, only: [:index, :update, :destroy, :create]
    resources :orders, only: [:new, :create, :index, :show]
    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
    get '/customers/check' => 'customers#check'
    get 'customers/mypage/edit' => 'customers#edit'
    #get 'customers/mypage/show' => 'customers#show'
+   patch 'customers/mypage' => 'customers#update'
 
    patch '/customers/withdrawal' => 'customers#withdrawal'
    delete '/cart items/delete_all' => 'cart_items#delete_all'
