@@ -4,6 +4,10 @@
 
 <table>
  <tr>
+  <th>会員ID</th> <th><%= @customer.id %></th>
+ </tr>
+
+ <tr>
   <th>氏名</th> <th><%= f.text_field :last_name %> <%= f.text_field :first_name %></th>
  </tr>
 
@@ -28,11 +32,10 @@
  </tr>
 
  <tr>
-  <th>会員ステータス</th> <th><%= f.radio_button :is_active, true %></th> <th>有効</th>
-  <th>会員ステータス</th> <th><%= f.radio_button :is_active, false %></th> <th>退会</th>
+  <th>会員ステータス</th> <th><%= f.radio_button :is_active, true %>有効 <%= f.radio_button :is_active, false %>退会</th>
  </tr>
 </table>
 
-<%= f.submit '変更内容を保存' %>
+<%= f.submit '変更を保存' %>
 
 <% end %>
