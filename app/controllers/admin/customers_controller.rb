@@ -3,8 +3,8 @@ class Admin::CustomersController < ApplicationController
    @customers=Customer.all
   end
 
-  def show
-   @customer=Customer.find(params[:id])
+  def show(params[:id])
+   @customer=Customer.find
   end
 
   def edit

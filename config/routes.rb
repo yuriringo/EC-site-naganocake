@@ -24,6 +24,9 @@ Rails.application.routes.draw do
    delete '/cart items/delete_all' => 'cart_items#delete_all'
    post '/orders/check' => 'orders#check'
    get '/orders/complete' => 'orders#complete'
+
+   #delete '/addresses/:id' => 'addresses#destroy'
+
   end
 
   namespace :admin do
