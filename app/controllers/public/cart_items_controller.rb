@@ -8,6 +8,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def destroy
+   @cart_items=CartItem.find(params[:id])
+   @cart_items.destroy
+   redirect_to cart_items_path
   end
 
   def delete_all
