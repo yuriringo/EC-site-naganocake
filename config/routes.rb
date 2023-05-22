@@ -21,7 +21,7 @@ Rails.application.routes.draw do
    patch 'customers/mypage' => 'customers#update'
 
    patch '/customers/withdrawal' => 'customers#withdrawal'
-   delete '/cart items/delete_all' => 'cart_items#delete_all'
+   delete '/cart_items/delete_all' => 'cart_items#delete_all'
    post '/orders/check' => 'orders#check'
    get '/orders/complete' => 'orders#complete'
 
