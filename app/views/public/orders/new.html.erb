@@ -14,25 +14,39 @@
 </br>
 <h5>お届け先</h5>
 
-<%= form_with model: @order, url: admin_items_path do |f| %>
+<%= form_with model: @order, url: orders_check_path do |f| %>
  <%= f.radio_button :address, true %>
   ご自身の住所
   <p>〒<%= @customer.postal_code %> <%= @customer.address %>
   </br>
   <%= @customer.last_name %><%= @customer.first_name %></p>
 
-  <%= f.radio_button :address, false %>
-   登録済住所から選択
-   <select>
-    <% @addresses.each do |address| %>
-     <option>〒<%= address.postal_code %> <%= address.delivery_address %> <%= address.name %></option>
-    <% end %>
-   </select>
+ <%= f.radio_button :address, false %>
+  登録済住所から選択
+  <select>
+   <% @addresses.each do |address| %>
+    <option>〒<%= address.postal_code %> <%= address.delivery_address %> <%= address.name %></option>
+   <% end %>
+  </select>
 
   </br>
   <%= f.radio_button :address, false %>
    新しいお届け先
-  <p></p>
+   <table>
+    <tr>
+     <th>郵便番号（ハイフンなし）</th> <th><%= f.text_field :postal_code %></th>
+    </tr>
+
+    <tr>
+     <th>住所</th> <th><%= f.text_area :address %></th>
+    </tr>
+
+    <tr>
+     <th>宛名</th> <th><%= f.text_area :name %></th>
+    </tr>
+   </table>
+
+   <%= f.submit '確認画面へ進む' %>
 
 
 <% end %>

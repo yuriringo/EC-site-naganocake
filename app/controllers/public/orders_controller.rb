@@ -6,6 +6,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def check
+    @order=Order.find(params[:id])
   end
 
   def complete
@@ -18,5 +19,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+  end
+  
+  private
+  def order_params
+   params.require(:orders).permit(:item_id, :amount, :image)
   end
 end
