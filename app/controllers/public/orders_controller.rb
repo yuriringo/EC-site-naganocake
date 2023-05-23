@@ -1,5 +1,8 @@
 class Public::OrdersController < ApplicationController
   def new
+   @addresses=Address.where(customer_id: current_customer.id)
+   @customer=current_customer
+   @order=Order.new
   end
 
   def check

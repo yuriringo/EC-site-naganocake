@@ -1,13 +1,38 @@
-<h4>注文情報入力</h4>
+<h5>注文情報入力</h5>
 <p>Find me in app/views/public/orders/new.html.erb</p>
 
-<h4>支払い方法</h4>
+<h5>支払い方法</h5>
 
-
-<%= form_with model: @item, url: admin_items_path do |f| %>
+<%= form_with model: @order, url: admin_items_path do |f| %>
  <%= f.radio_button :payment_options, true %>
   クレジットカード
- <%= f.radio_button :is_active, false %>
+ <%= f.radio_button :payment_options, false %>
   販売停止中
+
+<% end %>
+
+</br>
+<h5>お届け先</h5>
+
+<%= form_with model: @order, url: admin_items_path do |f| %>
+ <%= f.radio_button :address, true %>
+  ご自身の住所
+  <p>〒<%= @customer.postal_code %> <%= @customer.address %>
+  </br>
+  <%= @customer.last_name %><%= @customer.first_name %></p>
+
+  <%= f.radio_button :address, false %>
+   登録済住所から選択
+   <select>
+    <% @addresses.each do |address| %>
+     <option>〒<%= address.postal_code %> <%= address.delivery_address %> <%= address.name %></option>
+    <% end %>
+   </select>
+
+  </br>
+  <%= f.radio_button :address, false %>
+   新しいお届け先
+  <p></p>
+
 
 <% end %>
