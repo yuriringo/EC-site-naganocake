@@ -6,7 +6,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def check
-    @order=Order.find(params[:id])
+   @order=Order.new[order_params]
+   @cart_items=current_customer.cart_items
+
+   if params[:order][:address_options]==0
+    @order.address=current_customer.address
+   elsif params[:order][:address_options]==1
+    @order.delivery_address=Delivery_address.all ?
+   elsif params[:order][:address_options]==2
+
+   end
+
+
   end
 
   def complete
@@ -20,9 +31,9 @@ class Public::OrdersController < ApplicationController
 
   def show
   end
-  
+
   private
   def order_params
-   params.require(:orders).permit(:item_id, :amount, :image)
+   params.require(:orders).permit(:payment_options, :address, :postal_code, :name)
   end
 end

@@ -3,25 +3,22 @@
 
 <h5>支払い方法</h5>
 
-<%= form_with model: @order, url: admin_items_path do |f| %>
- <%= f.radio_button :payment_options, true %>
+<%= form_with model: @order, url: orders_check_path do |f| %>
+ <%= f.radio_button :payment_options, 0 %>
   クレジットカード
- <%= f.radio_button :payment_options, false %>
-  販売停止中
-
-<% end %>
+ <%= f.radio_button :payment_options, 1 %>
+  銀行振込
 
 </br>
 <h5>お届け先</h5>
 
-<%= form_with model: @order, url: orders_check_path do |f| %>
- <%= f.radio_button :address, true %>
+ <%= f.radio_button :address_options, 0 %>
   ご自身の住所
   <p>〒<%= @customer.postal_code %> <%= @customer.address %>
   </br>
   <%= @customer.last_name %><%= @customer.first_name %></p>
 
- <%= f.radio_button :address, false %>
+ <%= f.radio_button :address_options, 1 %>
   登録済住所から選択
   <select>
    <% @addresses.each do |address| %>
@@ -30,7 +27,7 @@
   </select>
 
   </br>
-  <%= f.radio_button :address, false %>
+  <%= f.radio_button :address_options, 2 %>
    新しいお届け先
    <table>
     <tr>
