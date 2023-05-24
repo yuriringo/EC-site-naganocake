@@ -12,11 +12,10 @@ class Public::OrdersController < ApplicationController
    if params[:order][:address_options]==0
     @order.address=current_customer.address
    elsif params[:order][:address_options]==1
-    @order.delivery_address=Delivery_address.all ?
+    @order.delivery_address=DeliveryAddress.find(params[:orders][:delivery_address]).address #この行から怪しい
    elsif params[:order][:address_options]==2
-
+    render :new
    end
-
 
   end
 
