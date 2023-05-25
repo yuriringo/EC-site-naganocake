@@ -8,17 +8,20 @@
     <p>会員でない方も商品の閲覧はできますが、</p>
     <p>購入には会員登録が必要になります。</p>
 
-  <div class="col-11 col-sm-10 col-lg-8 col-xl-6">
    <h2>新着商品</h2>
-    <table>
-     <thead>
-      <tr>
-       <th></th>
-       <th>商品名</th>
-       <th>商品名</th>
-       <th>商品名</th>
-       <th>商品名</th>
-       <th colspan="4"></th>
-      </tr>
-     </thead>
-    </table>
+    <div class="row">
+    <% @items.each do |item| %>
+     <div class="col-md-3">
+      <th>
+       <%= link_to item_path(item.id) do %>
+        <%= image_tag item.get_image(100,100) %>
+       <% end %>
+      </th>
+
+      <p><%= item.name %></p>
+
+      <p>¥<%= item.price %></p>
+     </div>
+     <% end %>
+   </div>
+ </div>

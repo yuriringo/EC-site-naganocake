@@ -9,6 +9,14 @@ class Public::OrdersController < ApplicationController
    @order=Order.new(order_params)
    @cart_items=current_customer.cart_items
 
+   if params[:order][:payment_options]=="0"
+    @order.payment_options=credit_card
+
+   else
+
+   end
+
+
    if params[:order][:address_options]=="0"
     @order.postal_code=current_customer.postal_code
     @order.address=current_customer.address
@@ -17,7 +25,7 @@ class Public::OrdersController < ApplicationController
    elsif params[:order][:address_options]=="1"
     @order.postal_code=Address.find(params[:order][:address_id]).postal_code
     #上記、カッコが2つあるのは、paramsという親要素からは孫要素である:address_idは直接呼び出せないから。子要素である:orderを呼び出してから孫を呼ばないと呼べない。
-    @order.address=Address.find(params[:order][:address_id]).address
+    @order.address=Address.find(params[:order][:address_id]).delivery_address
     @order.name=Address.find(params[:order][:address_id]).name
 
    elsif params[:order][:address_options]=="2"
