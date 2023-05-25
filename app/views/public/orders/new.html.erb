@@ -25,11 +25,8 @@
 
  <%= f.radio_button :address_options, 1 %>
   登録済住所から選択
-  <select>
-   <% @addresses.each do |address| %>
-    <option>〒<%= address.postal_code %> <%= address.delivery_address %> <%= address.name %></option>
-   <% end %>
-  </select>
+  </br>
+  <%= f.select :address_id, options_from_collection_for_select(current_customer.addresses, :id, :address_display) %>
 
   </br>
   <%= f.radio_button :address_options, 2 %>
