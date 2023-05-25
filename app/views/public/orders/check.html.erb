@@ -43,4 +43,9 @@
  <P>商品合計</P>
  <P>請求金額</P>
 
+ <P>支払い方法</P>
+  <%= @order.payment_options %>
+ <P>お届け先</P>
+  <%= @order.address %>
+
 <% end %>

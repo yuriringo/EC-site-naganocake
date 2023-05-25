@@ -6,13 +6,19 @@ class Public::OrdersController < ApplicationController
   end
 
   def check
-   @order=Order.new[order_params]
+   @order=Order.new(order_params)
    @cart_items=current_customer.cart_items
 
    if params[:order][:address_options]==0
+    @order.address=current_customer.postal_code
     @order.address=current_customer.address
+    @order.address=current_customer.name
+
    elsif params[:order][:address_options]==1
-    @order.delivery_address=DeliveryAddress.find(params[:orders][:delivery_address]).address #この行から怪しい
+    @order.address=DeliveryAddress.find(params[:order][:delivery_address]).postal_code
+    @order.address=DeliveryAddress.find(params[:order][:delivery_address]).address
+    @order.address=DeliveryAddress.find(params[:order][:delivery_address]).name
+
    elsif params[:order][:address_options]==2
     render :new
    end
@@ -33,6 +39,6 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-   params.require(:orders).permit(:payment_options, :address, :postal_code, :name)
+   params.require(:order).permit(:payment_options, :address, :postal_code, :name)
   end
 end
