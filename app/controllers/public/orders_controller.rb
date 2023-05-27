@@ -8,6 +8,7 @@ class Public::OrdersController < ApplicationController
   def check
    @order=Order.new(order_params)
    @cart_items=current_customer.cart_items
+   @total=0
 
    #if params[:order][:payment_options]=="credit_card"
     #@order.payment_options="credit_card"

@@ -5,7 +5,8 @@
 
 
 <h5>注文情報確認</h5>
-<p>Find me in app/views/public/orders/check.html.erb</p>
+<div class="row">
+
 
 <%= form_with model: @order,url: orders_complete_path do |f| %>
 
@@ -39,23 +40,37 @@
      <%= cart_item.sum_of_price %>
     </td>
    </tr>
+
+     <% @total += cart_item.sum_of_price %>
   <% end %>
   </tbody>
  </table>
 
+<table>
+ <tr>
+  <th>送料</th> <th>800</th>
+ </tr>
+
+ <tr>
+ <th>商品合計</th><th><%= @total %></th>
+ </tr>
+
+ <tr>
+  <th>請求金額</th><th><%= @total+800 %></th>
+ </tr>
+</table>
+</div>
 
 
- <P>送料</P>
- <P>商品合計</P>
- <P>請求金額</P>
 
- <P>支払い方法</P>
-  <%= @order.payment_method_i18n %>
+ <th>支払い方法</th> <th><%= @order.payment_method_i18n %></th>
 
  <P>お届け先</P>
-  <%= @order.postal_code %>
+  <th><%= @order.postal_code %>
   <%= @order.address %>
-  <%= @order.name %>
+  <%= @order.name %></th>
+
+   <%= f.submit '注文を確定する' %>
 
 <% end %>
 

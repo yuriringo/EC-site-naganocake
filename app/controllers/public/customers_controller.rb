@@ -21,7 +21,14 @@ class Public::CustomersController < ApplicationController
   end
 
   def withdrawal
-   @customer=current_customer
+   # 退会対象のCustomerを特定
+   @customer = current_customer
+   # @customerのis_deletedをtrueにする
+   @customer.update(is_deleted: true)
+   # ログイン情報を破棄
+   reset_session
+   # topにリダイレクト
+   redirect_to root_path
   end
 
   private

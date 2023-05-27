@@ -18,7 +18,7 @@ Rails.application.routes.draw do
    resources :orders, only: [:new, :create, :index, :show]
    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-   get '/' => 'homes#top'
+   root to: 'homes#top'
    get '/about' => 'homes#about'
    get '/customers/check' => 'customers#check'
    get 'customers/mypage/edit' => 'customers#edit'
