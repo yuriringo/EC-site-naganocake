@@ -9,13 +9,13 @@ class Public::OrdersController < ApplicationController
    @order=Order.new(order_params)
    @cart_items=current_customer.cart_items
 
-   if params[:order][:payment_options]=="0"
-    @order.payment_options=credit_card
+   #if params[:order][:payment_options]=="credit_card"
+    #@order.payment_options="credit_card"
 
-   else
+   #else
 
-   end
-
+   #end
+  #byebug
 
    if params[:order][:address_options]=="0"
     @order.postal_code=current_customer.postal_code
@@ -30,7 +30,6 @@ class Public::OrdersController < ApplicationController
 
    elsif params[:order][:address_options]=="2"
 
-    redirect_to orders_complete_path
    end
 
   end
@@ -49,10 +48,7 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-   params.require(:order).permit(:payment_options, :address, :postal_code, :name)
+   params.require(:order).permit(:payment_method, :address, :postal_code, :name)
   end
 
-  def address_params
-  params.require(:order).permit(:postal_code, :address, :name)
-  end
 end

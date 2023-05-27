@@ -50,7 +50,8 @@
  <P>請求金額</P>
 
  <P>支払い方法</P>
-  <%= @order.payment_options %>
+  <%= @order.payment_method_i18n %>
+
  <P>お届け先</P>
   <%= @order.postal_code %>
   <%= @order.address %>
