@@ -39,9 +39,15 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+   @cart_items=current_customer.cart_items
+   @order=Order.new(order_params)
+   @order.user_id=current_user.id
+   @order.save
+   redirect_to orders_complete_path
   end
 
   def index
+   @order=Order.new(order_params)
   end
 
   def show
