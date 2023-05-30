@@ -41,7 +41,7 @@ class Public::OrdersController < ApplicationController
   def create
    @cart_items=current_customer.cart_items
    @order=Order.new(order_params)
-   @order.user_id=current_user.id
+   @order.id=current_customer.order.id
    @order.save
    redirect_to orders_complete_path
   end
@@ -55,7 +55,7 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-   params.require(:order).permit(:payment_method, :address, :postal_code, :name)
+   params.require(:order).permit(:payment_method, :address, :postal_code, :name, :total)
   end
 
 end
