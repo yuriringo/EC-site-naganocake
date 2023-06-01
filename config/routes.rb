@@ -15,6 +15,9 @@ Rails.application.routes.draw do
      delete "delete_all"
      end
     end
+   post '/orders/check' => 'orders#check'
+   get '/orders/complete' => 'orders#complete'
+
    resources :orders, only: [:new, :create, :index, :show]
    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
@@ -26,9 +29,6 @@ Rails.application.routes.draw do
 
    patch '/customers/withdrawal' => 'customers#withdrawal'
    #delete '/cart_items/delete_all' => 'cart_items#delete_all'
-   post '/orders/check' => 'orders#check'
-   get '/orders/complete' => 'orders#complete'
-
    #delete '/addresses/:id' => 'addresses#destroy'
 
   end
