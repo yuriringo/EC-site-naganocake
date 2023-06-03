@@ -43,11 +43,24 @@ class Public::OrdersController < ApplicationController
    @order=Order.new(order_params)
    @order.customer_id=current_customer.id
    @order.save
+   @cart_items.each do |cart_item|
+    order_item=OrderItem.new
+    #以下に保存したい内容を記述。ER図の注文商品テーブルの商品IDから税込み購入時価格までの4つの情報を記述。
+    order_item.item_id=cart_item.item_id
+    order_item.order_id=@order.id #中間テーブルの記述
+    order_item.amount=cart_item.amount
+    order_item.purchase_price=cart_item.item.price
+    order_item.confectionary_status=cart_item.item.is_active
+
+    order_item.save
+   end
+   @cart_items.destroy_all
    redirect_to orders_complete_path
   end
 
   def index
-   @order=Order.new(order_params)
+   @orders=Order.all
+   @total=0
   end
 
   def show

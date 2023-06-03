@@ -6,6 +6,7 @@ class Item < ApplicationRecord
  validates :is_active, presence: true
 
  has_many :cart_items
+ has_many :order_items
  has_one_attached :image
 
   #消費税を加えた価格
