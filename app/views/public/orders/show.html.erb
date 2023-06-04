@@ -55,21 +55,14 @@
   <tbody>
    <% @order.order_items.each do |order_item| %>
    <tr>
-    <td>
-     <%= order_item.item.name %>
-    </td>
+    <td><%= order_item.item.name %></td>
 
-    <td>
-     <%= order_item.item.add_tax_price.to_s(:delimited) %>
-    </td>
+    <td><%= order_item.item.add_tax_price.to_s(:delimited) %></td>
 
-    <td>
-     <%= order_item.amount %>
-    </td>
+    <td><%= order_item.amount %></td>
 
-    <td>
-     <%= order_item.sum_of_price %>
-    </td>
+    <td><%= order_item.sum_of_price %></td>
    </tr>
+   <% end %>
   </tbody>
-  <% end %>
+ </table>
