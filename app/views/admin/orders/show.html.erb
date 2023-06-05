@@ -1,2 +1,25 @@
-<h1>Admin::Orders#show</h1>
+<h1>注文履歴詳細</h1>
 <p>Find me in app/views/admin/orders/show.html.erb</p>
+<%= form_with model: @order,url: admin_order_path(order.id), method: :patch do |f| %>
+ 
+ <tr>
+   <th>購入者</th> <th><%= @order.name %></th>
+ </tr>
+ 
+ <tr>
+   <th>注文日</th> <th>（日付）</th>
+ </tr>
+ 
+ <tr>
+   <th>配送先</th> <th>（配送先）</th>
+ </tr>
+ 
+ <tr>
+   <th>支払い方法</th> <th>（支払い方法）</th>
+ </tr>
+ 
+ <tr>
+   <th>注文ステータス</th> <th>（ステータス）</th>
+ </tr>
+
+<% end %>

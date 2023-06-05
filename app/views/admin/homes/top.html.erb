@@ -12,7 +12,7 @@
   <tbody>
    <% @orders.each do |order| %>
    <tr>
-    <td><%= order.updated_at %></td>
+    <td><%= link_to order.updated_at, admin_order_path(order.id) %></td>
     <td><%= order.name %></td>
     <% order.order_items.each do |order_item| %>
     <td><%= order_item.amount %></td>
