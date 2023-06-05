@@ -10,12 +10,14 @@
    </tr>
   </thead>
   <tbody>
-   <% @customer.order_items.each do |order_item| %>
+   <% @orders.each do |order| %>
    <tr>
-    <td><%= @customer.order_items.updated_at %></td>
-    <td><%= @customer.last_name %><%= @customer.first_name %></td>
-    <td><%= @customer.order_items.amount %></td>
-    <td><%= @customer.order_items.confectionary_status %></td>
+    <td><%= order.updated_at %></td>
+    <td><%= order.name %></td>
+    <% order.order_items.each do |order_item| %>
+    <td><%= order_item.amount %></td>
+    <td><%= order_item.confectionary_status %></td>
+    <% end %>
    </tr>
    <% end %>
   </tbody>
