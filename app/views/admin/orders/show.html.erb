@@ -24,7 +24,6 @@
  </tr>
 </table>
 
-<% end %>
 </br>
 
 <table>
@@ -34,8 +33,8 @@
     <th>単価（税込）</th>
     <th>数量</th>
     <th>小計</th>
-    <th></th>
-    <th colspan="4"></th>
+    <th>製作ステータス</th>
+    <th colspan="5"></th>
    </tr>
   </thead>
   <tbody>
@@ -56,9 +55,16 @@
     <td>
      <%= order_item.sum_of_price %>
     </td>
+
+    <td>
+     <%= order_item.confectionary_status %>
+     <%= f.select :confectionary_status, options_from_collection_for_select(order_item.confectionary_status) %>
+    </td>
+   </tr>
    </tr>
 
-     <% @total += order_item.sum_of_price %>
   <% end %>
   </tbody>
  </table>
+
+ <% end %>
