@@ -24,6 +24,10 @@
  </tr>
 </table>
 
+<% @order.order_items.each do |order_item| %>
+ <% @total += order_item.sum_of_price %>
+<% end %>
+
 </br>
 
 <table>
@@ -57,15 +61,29 @@
     </td>
 
     <td>
-     <%= order_item.confectionary_status %>
-     <%= f.select :confectionary_status, options_from_collection_for_select(order_item.confectionary_status) %>
-
+     <%= f.select :confectionary_status, {'製作不可': 0, '製作待ち': 1, '製作中': 2, '製作完了': 3}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
     </td>
-   </tr>
+
+    <td>
+     <%= f.submit '更新する' %>
+    </td>
    </tr>
 
   <% end %>
   </tbody>
+ </table>
+
+ </br>
+ <table>
+  <tr>
+   <th>商品合計</th> <th><%= @total %></th>
+  </tr>
+  <tr>
+   <th>送料</th> <th><%= 800 %></th>
+  </tr>
+  <tr>
+   <th>請求合計金額</th> <th><%= @total+800 %></th>
+  </tr>
  </table>
 
  <% end %>
