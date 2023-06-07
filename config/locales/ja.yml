@@ -4,3 +4,12 @@ ja:
         payment_method:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+
+ja:
+    enums:
+      order_item: #モデルのファイル名と揃える
+        confectionary_status:
+          not_product: "製作不可"
+          product_wait: "製作待ち"
+          producting: "製作中"
+          completed: "製作完了"
