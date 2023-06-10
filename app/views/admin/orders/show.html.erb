@@ -1,7 +1,5 @@
 <h4>注文履歴詳細</h4>
 <p>Find me in app/views/admin/orders/show.html.erb</p>
-<%= form_with model: @order,url: admin_order_detail_path(@order.id), method: :patch do |f| %>
-
 <table>
  <tr>
    <th>購入者</th> <th><%= @order.name %></th>
@@ -61,11 +59,13 @@
     </td>
 
     <td>
-     <%= f.select :confectionary_status, {'製作不可': 0, '製作待ち': 1, '製作中': 2, '製作完了': 3}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+     <%= form_with(model: order_item, url: admin_order_detail_path(id: order_item.id)) do |f| %>
+      <%= f.select :confectionary_status, {'製作不可': 'not_product', '製作待ち': 'product_wait', '製作中': 'producting', '製作完了': 'completed'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+      <%= f.submit '更新する' %>
+     <% end %>
     </td>
 
     <td>
-     <%= f.submit '更新する' %>
     </td>
    </tr>
 
@@ -85,5 +85,3 @@
    <th>請求合計金額</th> <th><%= @total+800 %></th>
   </tr>
  </table>
-
- <% end %>
