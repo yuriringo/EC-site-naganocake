@@ -1,27 +1,38 @@
-<h4>注文履歴詳細</h4>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
-<table>
- <tr>
-   <th>購入者</th> <th><%= @order.name %></th>
- </tr>
+<div class="container">
+ <div class="row">
+  <div class="mx-auto col-8 col-sm-10">
 
- <tr>
-   <th>注文日</th> <th><%= @order.updated_at %></th>
- </tr>
+   <h4>注文履歴詳細</h4>
+   <p>Find me in app/views/admin/orders/show.html.erb</p>
+   <table>
+    <tr>
+      <th>購入者</th> <th><%= @order.name %></th>
+    </tr>
 
- <tr>
-   <th>配送先</th> <th><%= @order.postal_code %><%= @order.address %> </br><%= @order.name %></th>
- </tr>
+    <tr>
+      <th>注文日</th> <th><%= @order.updated_at %></th>
+    </tr>
 
- <tr>
-   <th>支払い方法</th> <th><%= @order.payment_method %></th>
- </tr>
+    <tr>
+      <th>配送先</th> <th><%= @order.postal_code %><%= @order.address %> </br><%= @order.name %></th>
+    </tr>
 
- <tr>
-   <th>注文ステータス</th> <th><%= @order.order_status %></th>
- </tr>
-</table>
+    <tr>
+      <th>支払い方法</th> <th><%= @order.payment_method %></th>
+    </tr>
 
+    <tr>
+      <th>注文ステータス</th> <th><%= @order.order_status %></th>
+    </tr>
+   </table>
+
+  </div>
+ </div>
+</div>
+
+<div class="container">
+ <div class="row">
+  <div class="mx-auto col-md-7 col-sm-10">
 <% @order.order_items.each do |order_item| %>
  <% @total += order_item.sum_of_price %>
 <% end %>
@@ -61,19 +72,21 @@
     <td>
      <%= form_with(model: order_item, url: admin_order_detail_path(id: order_item.id)) do |f| %>
       <%= f.select :confectionary_status, {'製作不可': 'not_product', '製作待ち': 'product_wait', '製作中': 'producting', '製作完了': 'completed'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-      <%= f.submit '更新する' %>
-     <% end %>
     </td>
 
     <td>
+      <%= f.submit '更新' %>
+     <% end %>
     </td>
    </tr>
 
   <% end %>
   </tbody>
  </table>
+ </div>
 
  </br>
+ <div class="col-md-3 col-sm-10 align-self-end">
  <table>
   <tr>
    <th>商品合計</th> <th><%= @total %></th>
@@ -85,3 +98,6 @@
    <th>請求合計金額</th> <th><%= @total+800 %></th>
   </tr>
  </table>
+ </div>
+ </div>
+</div>
