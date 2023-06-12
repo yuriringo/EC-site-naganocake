@@ -33,71 +33,71 @@
 <div class="container">
  <div class="row">
   <div class="mx-auto col-md-7 col-sm-10">
-<% @order.order_items.each do |order_item| %>
- <% @total += order_item.sum_of_price %>
-<% end %>
-
-</br>
-
-<table>
-  <thead>
-   <tr>
-    <th>商品名</th>
-    <th>単価（税込）</th>
-    <th>数量</th>
-    <th>小計</th>
-    <th>製作ステータス</th>
-    <th colspan="5"></th>
-   </tr>
-  </thead>
-  <tbody>
    <% @order.order_items.each do |order_item| %>
-   <tr>
-    <td>
-     <%= order_item.item.name %>
-    </td>
+    <% @total += order_item.sum_of_price %>
+   <% end %>
 
-    <td>
-     <%= order_item.item.add_tax_price.to_s(:delimited) %>
-    </td>
+   </br>
 
-    <td>
-     <%= order_item.amount %>
-    </td>
+    <table class="table table-hover table-inverse">
+      <thead>
+       <tr>
+        <th>商品名</th>
+        <th>単価（税込）</th>
+        <th>数量</th>
+        <th>小計</th>
+        <th>製作ステータス</th>
+        <th colspan="5"></th>
+       </tr>
+      </thead>
+      <tbody>
+       <% @order.order_items.each do |order_item| %>
+       <tr>
+        <td>
+         <%= order_item.item.name %>
+        </td>
 
-    <td>
-     <%= order_item.sum_of_price %>
-    </td>
+        <td>
+         <%= order_item.item.add_tax_price.to_s(:delimited) %>
+        </td>
 
-    <td>
-     <%= form_with(model: order_item, url: admin_order_detail_path(id: order_item.id)) do |f| %>
-      <%= f.select :confectionary_status, {'製作不可': 'not_product', '製作待ち': 'product_wait', '製作中': 'producting', '製作完了': 'completed'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
-    </td>
+        <td>
+         <%= order_item.amount %>
+        </td>
 
-    <td>
-      <%= f.submit '更新' %>
-     <% end %>
-    </td>
-   </tr>
+        <td>
+         <%= order_item.sum_of_price %>
+        </td>
 
-  <% end %>
-  </tbody>
- </table>
- </div>
+        <td>
+         <%= form_with(model: order_item, url: admin_order_detail_path(id: order_item.id)) do |f| %>
+          <%= f.select :confectionary_status, {'製作不可': 'not_product', '製作待ち': 'product_wait', '製作中': 'producting', '製作完了': 'completed'}, { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+        </td>
 
- </br>
- <div class="col-md-3 col-sm-10 align-self-end">
- <table>
-  <tr>
-   <th>商品合計</th> <th><%= @total %></th>
-  </tr>
-  <tr>
-   <th>送料</th> <th><%= 800 %></th>
-  </tr>
-  <tr>
-   <th>請求合計金額</th> <th><%= @total+800 %></th>
-  </tr>
- </table>
- </div>
- </div>
-</div>
+        <td>
+          <%= f.submit '更新', class: "btn btn-success" %>
+         <% end %>
+        </td>
+       </tr>
+
+      <% end %>
+      </tbody>
+     </table>
+     </div>
+
+
+     <div class="col-md-3 col-sm-10 align-self-end">
+     <table>
+      <tr>
+       <th>商品合計</th> <th><%= @total %></th>
+      </tr>
+      <tr>
+       <th>送料</th> <th><%= 800 %></th>
+      </tr>
+      <tr>
+       <th>請求合計金額</th> <th><%= @total+800 %></th>
+      </tr>
+     </table>
+     </div>
+    </div>
+   </div>
