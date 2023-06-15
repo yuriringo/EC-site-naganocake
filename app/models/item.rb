@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
- 
+
  validates :name, presence: true
  validates :introduction, presence: true
  validates :price, presence: true
@@ -21,5 +21,8 @@ class Item < ApplicationRecord
   end
    image.variant(resize_to_limit: [width, height]).processed
  end
+
+
+ enum is_active: { for_sale: 0, stop_selling: 1 }
 
 end

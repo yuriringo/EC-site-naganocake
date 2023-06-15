@@ -14,10 +14,12 @@
    <tr>
     <td><%= link_to order.updated_at, admin_order_path(order.id) %></td>
     <td><%= order.name %></td>
+    <% sum=0 %>
     <% order.order_items.each do |order_item| %>
-    <td><%= order_item.amount %></td>
-    <td><%= order_item.confectionary_status %></td>
+     <% sum += order_item.amount %>
     <% end %>
+    <td><%= sum %></td>
+    <td><%= order.order_status_i18n %></td>
    </tr>
    <% end %>
   </tbody>
